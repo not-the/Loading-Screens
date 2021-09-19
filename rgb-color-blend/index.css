@@ -1,0 +1,127 @@
+body {
+    margin: 0;
+    height: 100vh;
+    width: 100%;
+    transition: 0.25s;
+    overflow: hidden;
+}
+.ball {
+    height: 6em;
+    width: 6em;
+    border-radius: 50%;
+
+    background: transparent;
+    mix-blend-mode:screen;
+    /* backdrop-filter: invert(); */
+    /* backdrop-filter: blur(0px); */
+    filter:drop-shadow(0px 12px 12px rgba(0, 0, 0, 0.25));
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    transition: 0.2s;
+}
+.ball:hover,
+.ball:active {
+    transform: translate(-50%, -50%) scale(1.5, 1.5);
+}
+.loading_ball1 {
+    animation: loading_ball 5s infinite ease;
+    background: #00F;
+}
+.loading_ball2 {
+    animation: loading_ball_r 5s infinite ease;
+    background: #0F0;
+}
+.loading_ball3 {
+    animation: loading_ball_upper 5s infinite ease;
+    background: #F00;
+}
+
+@keyframes loading_ball {
+    0% {
+        margin-left: 0rem;
+        margin-top: 0rem;
+    }
+    50% {
+        margin-left: -4rem;
+        margin-top: 4rem;
+    }
+    100% {
+        margin-left: 0rem;
+        margin-top: 0rem;
+    }
+}
+@keyframes loading_ball_r {
+    0% {
+        margin-left: 0rem;
+        margin-top: 0rem;
+    }
+    50% {
+        margin-left: 4rem;
+        margin-top: 4em;
+    }
+    100% {
+        margin-left: 0rem;
+        margin-top: 0rem;
+    }
+}
+@keyframes loading_ball_upper {
+    0% {
+        margin-left: 0rem;
+        margin-top: 0rem;
+    }
+    50% {
+        margin-left: 0rem;
+        margin-top: -4rem;
+    }
+    100% {
+        margin-left: 0rem;
+        margin-top: 0rem;
+    }
+}
+
+/* @keyframes loading_ball {
+    0% {
+        margin-left: -1rem;
+        margin-top: 1rem;
+    }
+    50% {
+        margin-left: -4rem;
+        margin-top: 4rem;
+    }
+    100% {
+        margin-left: -1rem;
+        margin-top: 1rem;
+    }
+}
+@keyframes loading_ball_r {
+    0% {
+        margin-left: 1rem;
+        margin-top: 1rem;
+    }
+    50% {
+        margin-left: 4rem;
+        margin-top: 4em;
+    }
+    100% {
+        margin-left: 1rem;
+        margin-top: 1rem;
+    }
+}
+@keyframes loading_ball_upper {
+    0% {
+        margin-left: 0rem;
+        margin-top: 0rem;
+    }
+    50% {
+        margin-left: 0rem;
+        margin-top: -4rem;
+    }
+    100% {
+        margin-left: 0rem;
+        margin-top: 0rem;
+    }
+} */

@@ -1,0 +1,77 @@
+body {
+    margin: 0;
+    height: 100vh;
+    width: 100%;
+    transition: 0.25s;
+    overflow: hidden;
+}
+/* body:hover {
+    background: black;
+} */
+/* .ball_container {
+    animation: fullrotate 10s infinite linear;
+}
+@keyframes fullrotate {
+    to {
+        transform: rotate(360deg);
+    }
+} */
+.ball {
+    height: 5em;
+    width: 5em;
+    border-radius: 50%;
+    /* box-shadow: 0px 10px 12px rgba(0, 0, 0, 0.5); */
+
+    background: transparent;
+    backdrop-filter: invert();
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    transition: 0.2s;
+}
+.ball:hover,
+.ball:active {
+    transform: translate(-50%, -50%) scale(1.5, 1.5);
+    /* background: rgba(128, 128, 128, 0.459); */
+}
+.loading_ball1 {
+    /* margin-right: 3rem; */
+    animation: loading_ball 2s infinite ease-in-out;
+}
+.loading_ball2 {
+    /* margin-left: 3rem; */
+
+    animation: loading_ball_r 2s infinite ease-in-out;
+}
+
+@keyframes loading_ball {
+    0% {
+        margin-left: 3rem;
+        /* transform: translate(-50%, -50%); */
+    }
+    50% {
+        margin-left: -3rem;
+        /* transform: translate(-50%, -50%) scale(1.5, 1.5); */
+    }
+    100% {
+        margin-left: 3rem;
+        /* transform: translate(-50%, -50%); */
+    }
+}
+@keyframes loading_ball_r {
+    0% {
+        margin-left: -3rem;
+        /* transform: translate(-50%, -50%) scale(1.5, 1.5); */
+    }
+    50% {
+        margin-left: 3rem;
+        /* transform: translate(-50%, -50%); */
+    }
+    100% {
+        margin-left: -3rem;
+        /* transform: translate(-50%, -50%) scale(1.5, 1.5); */
+    }
+}
