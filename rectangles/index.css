@@ -1,3 +1,9 @@
+:root {
+    --box-size: 12em;
+    --rect-size: 6em;
+    --transform: 6em; /* distance needed to put rect at opposite side */
+}
+
 * {
     box-sizing: border-box;
 }
@@ -9,9 +15,11 @@ body {
     overflow: hidden;
 }
 .rect_container {
-    height: 12em;
-    width: 12em;
-    border: 2px solid red;
+    height: var(--box-size);
+    width: var(--box-size);
+    /* border: 2px solid red; */
+    border-radius: 24px;
+    overflow: hidden;
 
     position: absolute;
     left: 50%;
@@ -19,25 +27,59 @@ body {
     transform: translate(-50%, -50%);
 }
 .rect {
-    height: 2em;
-    width: 2em;
-    background: white;
+    height: var(--rect-size);
+    width: var(--rect-size);
+    background: black;
     border: 4px solid black;
+    /* border-radius: 4px; */
     position: absolute;
 
     transition: 0.2s;
 }
 .rect1 {
-    animation:
-        anim 1.25s infinite ease-out
-        anim2 2.5s infinite ease-out;
+    animation: anim1 8s infinite cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 .rect2 {
-    opacity: 0.25;
+    /* opacity: 0.25; */
+    animation: anim1 8s 4s infinite cubic-bezier(0.165, 0.84, 0.44, 1);
 }
-@keyframes anim {
-    to {width: 100%;}
+@keyframes anim1 {
+    0%    { width: var(--rect-size); height: var(--rect-size); transform: translate(0, 0);}
+    12.5% { width: var(--box-size);  height: var(--rect-size); transform: translate(0, 0);}
+    25%   { width: var(--rect-size); height: var(--rect-size); transform: translate(var(--transform), 0); }
+    37.5% { width: var(--rect-size); height: var(--box-size);  transform: translate(var(--transform), 0); }
+    50%   { width: var(--rect-size); height: var(--rect-size);  transform: translate(var(--transform), var(--transform)); }
+    62.5% { width: var(--box-size); height: var(--rect-size);  transform: translate(0, var(--transform)); }
+    75%   { width: var(--rect-size); height: var(--rect-size);  transform: translate(0, var(--transform)); }
+    87.5% { width: var(--rect-size); height: var(--box-size);  transform: translate(0, 0); }
+    100%  { width: var(--rect-size); height: var(--rect-size);  transform: translate(0, 0); }
 }
-@keyframes anim2 {
-    50% {width: 100%;}
+#inverse {
+    height: 4em;
+    width: 4em;
+    border-radius: 12px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1, 0.5);
+    background-color: transparent;
+    backdrop-filter: invert();
+
+    opacity: 0;
+    transition-property: opacity, transform;
+    transition-duration: 0.2s;
 }
+
+.rect_container:hover #inverse {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+}
+.rect_container:active #inverse,
+.rect_container:focus-within #inverse,
+.rect_container:focus-visible #inverse {
+    transition-duration: 0.5s;
+    transition-timing-function: cubic-bezier(0.955, 0.03, 0.515, 0.8);
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(2, 2);
+}
+
